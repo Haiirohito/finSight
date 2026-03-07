@@ -9,20 +9,29 @@ load_dotenv(env_path)
 
 
 class Settings:
-    PROJECT_NAME: str = "FinSight"
-    PROJECT_VERSION: str = "1.0.0"
+    def __init__(self):
+        self.PROJECT_NAME = "FinSight"
+        self.PROJECT_VERSION = "1.0.0"
 
-    POSTGRES_USER: str = os.getenv("POSTGRES_USER")
-    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD")
-    POSTGRES_SERVER: str = os.getenv("POSTGRES_SERVER")
-    POSTGRES_PORT: str = os.getenv("POSTGRES_PORT")
-    POSTGRES_DB: str = os.getenv("POSTGRES_DB")
+        self.POSTGRES_USER = os.getenv("POSTGRES_USER")
+        self.POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+        self.POSTGRES_SERVER = os.getenv("POSTGRES_SERVER")
+        self.POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+        self.POSTGRES_DB = os.getenv("POSTGRES_DB")
 
-    DATABASE_URL: str = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}:{POSTGRES_PORT}/{POSTGRES_DB}"
+        self.DATABASE_URL = (
+            f"postgresql://{self.POSTGRES_USER}:"
+            f"{self.POSTGRES_PASSWORD}@"
+            f"{self.POSTGRES_SERVER}:"
+            f"{self.POSTGRES_PORT}/"
+            f"{self.POSTGRES_DB}"
+        )
 
-    SECRET_KEY: str = os.getenv("SECRET_KEY")
-    ALGORITHM: str = os.getenv("ALGORITHM")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+        self.SECRET_KEY = os.getenv("SECRET_KEY")
+        self.ALGORITHM = os.getenv("ALGORITHM")
+        self.ACCESS_TOKEN_EXPIRE_MINUTES = int(
+            os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
+        )
 
 
 settings = Settings()
