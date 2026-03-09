@@ -29,9 +29,14 @@ class Settings:
 
         self.SECRET_KEY = os.getenv("SECRET_KEY")
         self.ALGORITHM = os.getenv("ALGORITHM")
+
         self.ACCESS_TOKEN_EXPIRE_MINUTES = int(
             os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30)
         )
+        self.RESET_TOKEN_EXPIRE_MINUTES = int(
+            os.getenv("RESET_TOKEN_EXPIRE_MINUTES", 10)
+        )
+        self.REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", 7))
 
 
 settings = Settings()

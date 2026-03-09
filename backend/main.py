@@ -8,6 +8,7 @@ from auth import models as auth_models
 
 # Router imports
 from auth.routes import router as auth_router
+from health.routes import router as health_router
 
 from core.config import settings
 
@@ -19,6 +20,7 @@ Base.metadata.create_all(bind=engine)
 
 # Register routers
 app.include_router(auth_router)
+app.include_router(health_router)
 
 
 @app.get("/")
